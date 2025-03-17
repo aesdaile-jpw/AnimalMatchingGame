@@ -10,7 +10,12 @@
 
             <Button x:Name="PlayAgainButton" Text="Play again?" FontSize="Large" Clicked="PlayAgainButton_Clicked"/>
 
+            <Label x:Name="TimeElapsed" Text="Time Elapsed: 0.0 seconds" FontSize="Large" />
 
+            <FlexLayout>
+                
+                
+            </FlexLayout>
 
         </VerticalStackLayout>
     </ScrollView>
