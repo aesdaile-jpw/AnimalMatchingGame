@@ -41,7 +41,7 @@
         {
             if (sender is Button buttonClicked)
             {
-                if (!string.IsNullOrWhiteSpace(buttonClicked.Text) && (findingMatch == false)
+                if (!string.IsNullOrWhiteSpace(buttonClicked.Text) && (findingMatch == false))
                 {
                     buttonClicked.BackgroundColor = Colors.Red;
                     lastClicked = buttonClicked;
@@ -49,14 +49,23 @@
                 }
                 else
                 {
-                    if (buttonClicked != lastClicked) && (buttonClicked.Text == lastClicked.Text)
+                    if ((buttonClicked != lastClicked) && (buttonClicked.Text == lastClicked.Text)
+                        && (!string.IsNullOrWhiteSpace(buttonClicked.Text)))
                     {
                         matchesFound++;
                         lastClicked.Text = " ";
                         buttonClicked.Text = " ";
                     }
-
+                    lastClicked.BackgroundColor = Colors.LightBlue;
+                    buttonClicked.BackgroundColor = Colors.LightBlue;
+                    findingMatch = false;
                 }
+            }
+            if (matchesFound == 8)
+            {
+                matchesFound = 0;
+                AnimalButtons.IsVisible = false;
+                PlayAgainButton.IsVisible = true;
             }
         }
     }
