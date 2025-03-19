@@ -34,9 +34,30 @@
 
         }
 
+        Button lastClicked;
+        bool findingMatch = false;
+        int matchesFound;
         private void Button_Clicked(object sender, EventArgs e)
         {
+            if (sender is Button buttonClicked)
+            {
+                if (!string.IsNullOrWhiteSpace(buttonClicked.Text) && (findingMatch == false)
+                {
+                    buttonClicked.BackgroundColor = Colors.Red;
+                    lastClicked = buttonClicked;
+                    findingMatch = true;
+                }
+                else
+                {
+                    if (buttonClicked != lastClicked) && (buttonClicked.Text == lastClicked.Text)
+                    {
+                        matchesFound++;
+                        lastClicked.Text = " ";
+                        buttonClicked.Text = " ";
+                    }
 
+                }
+            }
         }
     }
 
