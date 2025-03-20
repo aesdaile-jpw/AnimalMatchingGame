@@ -24,6 +24,7 @@
                 "🐯","🐯",
                 "🐰","🐰"
                 ];
+
             foreach (var button in AnimalButtons.Children.OfType<Button>())
             {
                 int index = Random.Shared.Next(animalEmoji.Count);
@@ -36,8 +37,8 @@
 
         }
 
-
         int tenthsOfSecondsElapsed = 0;
+
         private bool TimerTick()
         {
             if (!this.IsLoaded) return false;
@@ -70,7 +71,7 @@
                 }
                 else
                 {
-                    if ((buttonClicked != lastClicked) && (buttonClicked.Text == lastClicked.Text))
+                    if ((buttonClicked != lastClicked) && (buttonClicked.Text == lastClicked.Text) && (!String.IsNullOrWhiteSpace(buttonClicked.Text)))
                     {
                         matchesFound++;
                         lastClicked.Text = " ";
@@ -82,7 +83,11 @@
                 }
             }
             if (matchesFound == 8)
-            { }
+            {
+                matchesFound = 0;
+                AnimalButtons.IsVisible = false;
+                PlayAgainButton.IsVisible = true;
+            }
         }
     }
 
